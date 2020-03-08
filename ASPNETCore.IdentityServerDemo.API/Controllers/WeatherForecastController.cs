@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace ASPNETCore.IdentityServerDemo.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
@@ -39,7 +40,7 @@ namespace ASPNETCore.IdentityServerDemo.API.Controllers
             .ToArray();
         }
 
-        [HttpGet("GetAsAdmin")]
+        [HttpGet("GetSecretClaimData")]
         [Authorize(Roles = "admin")]
         public IEnumerable<SimpleClaim> GetSecretClaimData()
         {

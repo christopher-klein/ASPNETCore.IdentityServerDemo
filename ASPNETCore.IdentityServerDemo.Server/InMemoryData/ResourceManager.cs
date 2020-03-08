@@ -11,17 +11,14 @@ namespace ASPNETCore.IdentityServerDemo.Server.InMemoryData
     {
         public static IEnumerable<ApiResource> Apis = new List<ApiResource>
             {
-                new ApiResource {
-                    Name = "app.1",
-                    DisplayName = "Whatever 1",
-                    ApiSecrets = { new Secret("a75a559d-1dab-4c65-9bc0-f8e590cb388d".Sha256()) },
-                    
-                    Scopes = new List<Scope> {
-                        new Scope("app.1.read"),
-                        new Scope("app.1.write")
-                    }
-                },
-                new ApiResource("app.api.weather","Weather Apis", new [] { JwtClaimTypes.Name, JwtClaimTypes.Email, JwtClaimTypes.Role, JwtClaimTypes.WebSite})
+                new ApiResource("app.api.weather",
+                    "Weather API", new [] 
+                    {
+                        JwtClaimTypes.Name, 
+                        JwtClaimTypes.Email, 
+                        JwtClaimTypes.Role, 
+                        JwtClaimTypes.WebSite
+                    })
             };
     }
 }

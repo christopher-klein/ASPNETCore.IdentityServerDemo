@@ -35,7 +35,7 @@ namespace ASPNETCore.IdentityServerDemo.Server
                 app.UseDeveloperExceptionPage();
             }
 
-            // apply setup 
+            // --> use identity server here <--
             app.UseIdentityServer();
 
             app.UseRouting();

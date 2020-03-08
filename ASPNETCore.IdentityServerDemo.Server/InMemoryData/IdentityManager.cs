@@ -13,8 +13,6 @@ namespace ASPNETCore.IdentityServerDemo.Server.InMemoryData
         {
             new IdentityResources.OpenId(),
             new IdentityResources.Profile(),
-            
-            new IdentityResource("roles", new[] {JwtClaimTypes.Role })
         };
     }
 }

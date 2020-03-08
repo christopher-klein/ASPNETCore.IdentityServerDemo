@@ -12,18 +12,18 @@ namespace ASPNETCore.IdentityServerDemo.Server.InMemoryData
             {
                     new Client
                     {
-                         ClientName = "Client Application2",
-                         ClientId = "3X=nNv?Sgu$S",
+                         ClientName = "Some Process",
+                         ClientId = "app1_machine_to_machine",
                          AllowedGrantTypes = GrantTypes.ClientCredentials,
-                         ClientSecrets = { new Secret("1554db43-3015-47a8-a748-55bd76b6af48".Sha256()) },
+                         ClientSecrets = { new Secret("verysecret".Sha256()) },
                          AllowedScopes = { "app.api.weather" }
                     },
                     new Client
                     {
-                        ClientId = "x12345",
-                        ClientName = "WbApp Client",
+                        ClientName = "WebApp Client",
+                        ClientId = "app1_user_auth",
                         ClientSecrets = new [] { new Secret("secret".Sha256())  },
-                        AllowedScopes = new [] { "app.api.weather", "roles"},
+                        AllowedScopes = new [] { "app.api.weather"},
                         AllowedGrantTypes = GrantTypes.ResourceOwnerPassword
 
                     }

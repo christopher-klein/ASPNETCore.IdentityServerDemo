@@ -30,9 +30,9 @@ namespace ASPNETCore.IdentityServerDemo.Server.Identity
                     new List<Claim>
                     {
                         new Claim(JwtClaimTypes.Name, "Bob Bobby"),
-                        new Claim(JwtClaimTypes.Email, "email@mail.com"),
+                        new Claim(JwtClaimTypes.Email, "bob@mail.com"),
                         new Claim(JwtClaimTypes.Role,"admin"),
-                        new Claim(JwtClaimTypes.WebSite,"google.de")
+                        new Claim(JwtClaimTypes.WebSite,"github.com")
                     });
             }
             else if (user != null 
@@ -44,7 +44,7 @@ namespace ASPNETCore.IdentityServerDemo.Server.Identity
                     new List<Claim>
                     {
                         new Claim(JwtClaimTypes.Name, "Alice Ally"),
-                        new Claim(JwtClaimTypes.Email, "email@mail.com"),
+                        new Claim(JwtClaimTypes.Email, "alice@mail.com"),
                         new Claim(JwtClaimTypes.Role,"user"),
                         new Claim(JwtClaimTypes.WebSite,"github.com")
                     });

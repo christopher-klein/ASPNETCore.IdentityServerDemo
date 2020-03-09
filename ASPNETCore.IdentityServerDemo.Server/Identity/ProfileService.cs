@@ -19,7 +19,7 @@ namespace ASPNETCore.IdentityServerDemo.Server.Identity
             // sub claim is default for userid when using .net identity manager
             var userId = context.Subject.Claims.FirstOrDefault(x => x.Type == "sub");
 
-            //ajust claims
+            // adjust claims
             context.IssuedClaims = context.Subject.Claims.Where(x => context.RequestedClaimTypes.Contains(x.Type)).ToList();
           
             return Task.CompletedTask;

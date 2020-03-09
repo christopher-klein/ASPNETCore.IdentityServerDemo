@@ -19,12 +19,15 @@ namespace ASPNETCore.IdentityServerDemo.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityServer()
-                    .AddDeveloperSigningCredential()
+                    .AddDeveloperSigningCredential() // do not use in production
                     .AddInMemoryApiResources(ResourceManager.Apis)
                     .AddInMemoryClients(ClientManager.Clients)
                     .AddInMemoryIdentityResources(IdentityManager.IdentityResources)
                     .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
                     .AddProfileService<ProfileService>();
+
+            // Define Clients, ApiResources and IdentityResources in appsettings.json when running in 
+            // production so you can easily manage other client authentications
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +43,7 @@ namespace ASPNETCore.IdentityServerDemo.Server
 
             app.UseRouting();
 
+            // used to show OpenID configuration when getting base url
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>

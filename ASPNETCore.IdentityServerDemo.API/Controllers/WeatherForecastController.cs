@@ -12,7 +12,7 @@ namespace ASPNETCore.IdentityServerDemo.API.Controllers
 {
     [ApiController]
     [Authorize]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -24,11 +24,12 @@ namespace ASPNETCore.IdentityServerDemo.API.Controllers
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
+            // inject default logger, it is not used in my example
             _logger = logger;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<WeatherForecast> GetWeatherData()
         {
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -40,15 +41,13 @@ namespace ASPNETCore.IdentityServerDemo.API.Controllers
             .ToArray();
         }
 
-        [HttpGet("GetSecretClaimData")]
+        [HttpGet]
         [Authorize(Roles = "admin")]
         public IEnumerable<SimpleClaim> GetSecretClaimData()
         {
-            _logger.LogInformation("Incoming request");
-
             var claimsIdentity = User.Identity as ClaimsIdentity;
 
-
+            //cast into simplier model type
             List<SimpleClaim> returnClaims = new List<SimpleClaim>();
             foreach(var claim in claimsIdentity.Claims)
             {

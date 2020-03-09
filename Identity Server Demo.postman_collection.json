@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "e14752ac-4dc5-4e69-b288-05f904e5ccb5",
+		"name": "IdentityServer4 Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:44355/.well-known/openid-configuration",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44355/.well-known/openid-configuration",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44355",
+					"path": [
+						".well-known",
+						"openid-configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44355/connect/token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "app1_machine_to_machine",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "verysecret",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "app.api.weather",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44355/connect/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44355",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44355/connect/token USER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "bob",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "some_password",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "app1_user_auth",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"type": "text"
+						},
+						{
+							"key": "scopes",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:44355/connect/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44355",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44366/WeatherForecast",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkNCZzFLRnRBWURRVVQzZWk3NGRmYUEiLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE1ODM2OTg5NjYsImV4cCI6MTU4MzcwMjU2NiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNTUiLCJhdWQiOiJhcHAuYXBpLndlYXRoZXIiLCJjbGllbnRfaWQiOiJhcHAxX21hY2hpbmVfdG9fbWFjaGluZSIsInNjb3BlIjpbImFwcC5hcGkud2VhdGhlciJdfQ.JMGwDDXfb5DRCSB-L3Dpy2E5B_qBlzfJrdL5EaMpaFGlM6FbbPjnmTmAvQ3hhqk_b-9-33dr1L8bGrnLfaF-wgH_5cyBevAatyo-uLyhGm9KS7JjxWNc8CEESz8I_uzAfMSB9WJFu-Kei0-ErW9Uh6noMKblwGaGrbcH_Te7raWZgpSDhALns-9JAFDllvTzuPF7B_7q65T7iptNmvSGa_5zj8idVoXUB6hEDCHZFSCzdQ9epMBKpgFzeAXEbf5Xlh-4HexQWAA6HOw42srWwI-c9EbIuSQLBBhnmRNgKrIYjrlaHBGZf23WbMb6a6BTZw3ezWQlqccMyeiqtU4SIQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44366/WeatherForecast",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44366",
+					"path": [
+						"WeatherForecast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:44366/WeatherForecast GetSecretClaimData",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkNCZzFLRnRBWURRVVQzZWk3NGRmYUEiLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE1ODM2OTg5NjYsImV4cCI6MTU4MzcwMjU2NiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNTUiLCJhdWQiOiJhcHAuYXBpLndlYXRoZXIiLCJjbGllbnRfaWQiOiJhcHAxX21hY2hpbmVfdG9fbWFjaGluZSIsInNjb3BlIjpbImFwcC5hcGkud2VhdGhlciJdfQ.JMGwDDXfb5DRCSB-L3Dpy2E5B_qBlzfJrdL5EaMpaFGlM6FbbPjnmTmAvQ3hhqk_b-9-33dr1L8bGrnLfaF-wgH_5cyBevAatyo-uLyhGm9KS7JjxWNc8CEESz8I_uzAfMSB9WJFu-Kei0-ErW9Uh6noMKblwGaGrbcH_Te7raWZgpSDhALns-9JAFDllvTzuPF7B_7q65T7iptNmvSGa_5zj8idVoXUB6hEDCHZFSCzdQ9epMBKpgFzeAXEbf5Xlh-4HexQWAA6HOw42srWwI-c9EbIuSQLBBhnmRNgKrIYjrlaHBGZf23WbMb6a6BTZw3ezWQlqccMyeiqtU4SIQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:44366/WeatherForecast/GetSecretClaimData",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44366",
+					"path": [
+						"WeatherForecast",
+						"GetSecretClaimData"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
